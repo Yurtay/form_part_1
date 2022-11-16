@@ -42,6 +42,7 @@ const UsersList = () => {
   }, [selectedProf]);
 
   const handleProfessionSelect = (item) => {
+    setSearchString("");
     setSelectedProf(item);
   };
 
@@ -52,7 +53,6 @@ const UsersList = () => {
   const hanleSort = (item) => {
     setSortBy(item);
   };
-
   if (users) {
     const filteredUsers = searchString
       ? users.filter((user) =>
@@ -71,7 +71,6 @@ const UsersList = () => {
     const clearFilter = () => {
       setSelectedProf();
     };
-
     return (
       <>
         <div className="d-flex">
@@ -97,6 +96,7 @@ const UsersList = () => {
               className="w-100"
               value={searchString}
               onChange={(e) => setSearchString(e.target.value)}
+              onClick={clearFilter}
             />
 
             {count > 0 && (

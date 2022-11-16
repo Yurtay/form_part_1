@@ -53,19 +53,12 @@ const UsersList = () => {
     setSortBy(item);
   };
 
-  if (searchString.length > 0) {
-    const resultSearch = users.filter((user) =>
-      JSON.stringify(user.name)
-        .toLowerCase()
-        .includes(searchString.toLowerCase())
-    );
-    if (resultSearch.length > 0) {
-      console.log("resultSearch", resultSearch);
-    }
-  }
-
   if (users) {
-    const filteredUsers = selectedProf
+    const filteredUsers = searchString
+      ? users.filter((user) =>
+          user.name.toLowerCase().includes(searchString.toLowerCase())
+        )
+      : selectedProf
       ? users.filter(
           (user) =>
             JSON.stringify(user.profession) === JSON.stringify(selectedProf)

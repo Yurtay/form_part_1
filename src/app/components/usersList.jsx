@@ -53,10 +53,15 @@ const UsersList = () => {
     setSortBy(item);
   };
 
-  const word = "abcdef";
-
   if (searchString.length > 0) {
-    console.log("searchString:", searchString);
+    const resultSearch = users.filter((user) =>
+      JSON.stringify(user.name)
+        .toLowerCase()
+        .includes(searchString.toLowerCase())
+    );
+    if (resultSearch.length > 0) {
+      console.log("resultSearch", resultSearch);
+    }
   }
 
   if (users) {
